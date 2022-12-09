@@ -1,0 +1,37 @@
+<head>
+    <style>
+        tr, th, td {
+            border: 1px solid black;
+            }
+        .tab{
+            height:40%;
+            width:100%;
+            border: 1px solid black;
+            }
+    </style>
+</head>
+
+<body>
+<h3>Просмотр всех пользователей</h3>
+
+  <table class = "table table-hover">
+    <thead class ="thead-dark">
+      <tr>
+        <th>Number</th>
+        <th>User</th>
+      </tr>
+    </thead>
+
+    <tbody>
+    <% k = 1 %>
+    <%@users.each do |user|%>
+      <tr>
+        <td><%= k %></td>
+        <td><%= user.email %></td>
+      </tr>
+      <% k += 1 %>
+    <% end%>
+    </tbody>
+  </table>
+
+</body>

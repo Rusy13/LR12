@@ -1,0 +1,39 @@
+<head>
+    <style>
+        tr, th, td {
+            border: 1px solid black;
+            }
+        .tab{
+            height:40%;
+            width:100%;
+            border: 1px solid black;
+            }
+    </style>
+</head>
+
+<body>
+  <h3>Результат</h3>
+  Диапазон: [0, <%= @number %>]
+
+  <table class = "table table-hover">
+    <thead class ="thead-dark">
+      <tr>
+        <th>Число</th>
+        <th>Квадрат числа</th>
+      </tr>
+    </thead>
+
+    <tbody>
+    <% @res_arr.each do |elem|%>
+      <tr>
+        <td><%= elem %></td>
+        <td><%= elem**2 %></td>
+      </tr>
+    <% end%>
+    </tbody>
+  </table>
+
+  Количество таких чисел
+  <p id="counter"><%= @res_arr.size %></p>
+  <%= link_to "Вернуться", :lr8c_input %>
+</body>

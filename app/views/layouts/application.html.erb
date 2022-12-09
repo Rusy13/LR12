@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LR8</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="<%= home_path %>">Home</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <% if user_signed_in?%>
+            <li class="nav-item active">
+              <a class="nav-link" href="<%= destroy_user_session_path %>" method = "DELETE">exit</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<%= show_path %>">XML</a>
+            </li>
+          <%else%>
+            <li class="nav-item active">
+              <a class="nav-link" href="<%= new_user_session_path %>">Inp</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<%= new_user_registration_path %>">Reg</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<%= allusers_path %>">all users</a>
+            </li>
+          <%end%>
+        </ul>
+      </div>
+    </nav>
+    <% flash.each do |name, message| %>
+      <div class="alert <%= bootstrap_class_for(name)%>">
+        <%# <button class="close" data-bs-dismiss="alert">&times;</button> %>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <%= message %>
+      </div>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
